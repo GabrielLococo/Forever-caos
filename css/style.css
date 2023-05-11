@@ -49,3 +49,8 @@ p {
     font-family: 'Graduate' ;
     margin-bottom: 20px;
 }
+
+.aviso {
+    background-color: rgba(153, 153, 153, 0.5);
+    margin-bottom: 10px;
+}
