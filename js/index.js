@@ -1,55 +1,55 @@
+const carrito = []
+const prendas = [{codigo: 1, articulo: 'Remera Caos Is Me', precio: 3500 },
+                 {codigo: 2, articulo: 'Remera Caos Shin & Shan', precio: 3700 },
+                 {codigo: 3, articulo: 'Remera Flor', precio: 3100},
+                 {codigo: 4, articulo: 'Buzo Alone', precio: 7200},
+                 {codigo: 5, articulo: 'Pantalon Disorder', precio: 5360},
+                 {codigo: 6, articulo: 'Camiza Barbara', precio: 4500},
+                 {codigo: 7, articulo: 'Guantes Caos', precio: 2300},
+                 {codigo: 8, articulo: 'Gorro Destroy', precio: 2100},
+                 {codigo: 9, articulo: 'Bufanda Retro', precio: 1800},
+                 {codigo: 10, articulo: 'Pantalon Judas', precio: 4800}]
 
-const cuotas = 3
 
-
-function mostrarCuotas() {
-    console.log('Cuotas sín interés:')
-    for (let i = 0; i < cuotas; i++) {
-        console.log((i + 1) + ' cuotas sin interés')
+class Compra {
+    constructor(carritoDeCompras) {
+        this.carrito = carritoDeCompras
     }
-    console.warn('Te recordamos que todas las semanas tenemos nuevas ofertas!')
-}
-
-function mostrarPrecio(codigo) {
-    console.log('Puedes elegir pagar tu prenda en cuotas!')
-    switch (parseInt(codigo)) {
-        case 1:
-            alert("Remera Caos is Me cuesta $5000")
-            break;
-        case 2:
-            alert("Remera Caos Shin & Shan cuesta $4500")
-            break;
-        case 3:
-            alert("Remera Flor cuesta $3800")
-            break;
-        case 4:
-            alert("Buzo Alone cuesta $12000")
-            break;
-        case 5:
-            alert("Pantalón Disorder cuesta $8000")
-            break;
-        default:
-            alert("El número de prenda no existe. Por favor ingresa un número válido.")
+    obtenerSubtotal() {
+        if (this.carrito.length > 0) {
+            return this.carrito.reduce((acc, prenda)=> acc + prenda.precio, 0)
+        }
     }
 }
 
-function presentacion() {
-    let nombre = prompt("Bienvenido a Forever Caos, nos dirías tu nombre?")
-    if (nombre) {
-        respuesta = confirm(`Hola ${nombre} !, ¿Deseas comprar alguna prenda?`)
+function buscarPrendas(codigo){
+    let res = prendas.find((prenda)=> prenda.codigo === parseInt(codigo))
+    return res 
+}
+
+function finalizarCompra() {
+    const efectuarCompra = new Compra(carrito)
+    alert(`Ok!, El costo total de tu compra es $ ${efectuarCompra.obtenerSubtotal()}. Muchas gracias por tu compra!`)
+}
+
+
+function comprar() {
+    let codigo = prompt(`Hola, ingresa el codigo de la prenda que desees`)
+    let prendaElegida = buscarPrendas(codigo)
+    if (prendaElegida !== undefined) {
+        carrito.push(prendaElegida)
+        alert(`Has agregado "${prendaElegida.articulo}" al carrito!`)
+        let respuesta = confirm('Deseas seguir comprando?')
+        if (respuesta === true) {
+            comprar()
+        } else {
+            finalizarCompra()
+        }
     } else {
-        respuesta = confirm("hola!,¿Deseas comprar alguna prenda? ")
-    }
-
-    if (respuesta) {
-        let codigo = prompt("ingresa el número de prenda que desees: ")
-
-    if (codigo) {
-        mostrarPrecio(codigo)
-        mostrarCuotas()
-    }
-    } else {
-        console.warn("Te esperamos cuando gustes, gracias por visitar Forever Caos.")
+        alert ('El codigo ingresado no es válido, Vuelve a intentarlo por favor.')
+        comprar()
     }
 }
 
+
+comprar()
