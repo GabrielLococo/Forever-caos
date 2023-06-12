@@ -58,7 +58,13 @@ function cargarProductos() {
     prendas.forEach((prenda) => {
         container.innerHTML += retornoCardHTML(prenda)
     })
+    clickButton() 
 }
 
 cargarProductos()
 
+function clickButton() {
+    const buttons = document.querySelectorAll('button.botonComprar') 
+}
+
+// 43:00 m EVENTOS
