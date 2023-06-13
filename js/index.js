@@ -49,7 +49,7 @@ function retornoCardHTML(prenda) {
                 <div class="imagen"><img src="${prenda.imagen}"></div>
                 <div class="prenda"><h2>${prenda.articulo}</h2></div>
                 <div class="importe"><p>$ ${prenda.precio}</p></div>
-                <div class="botonComprar"><button id= " ${prenda.codigo}">Agregar al carrito</button></div>
+                <div class="botonComprar"><button id= " ${prenda.codigo}" class="buttonClickBuy">Agregar al carrito</button></div>
             </div>`
 }
 
@@ -64,7 +64,15 @@ function cargarProductos() {
 cargarProductos()
 
 function clickButton() {
-    const buttons = document.querySelectorAll('button.botonComprar') 
+    const buttons = document.querySelectorAll('button.buttonClickBuy') 
+    for (let button of buttons) {
+        button.addEventListener('click', (e)=> {
+          const prendaElegida = prendas.find((prenda) => prenda.codigo === parseInt(e.target.id))
+          carrito.push(prendaElegida)
+          console.table(carrito)
+        })
+    }
 }
 
-// 43:00 m EVENTOS
+
+
