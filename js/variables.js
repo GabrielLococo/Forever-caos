@@ -1,4 +1,12 @@
-const carrito = []
+function recuperarCarrito() {
+    if (localStorage.getItem('carrito')) {
+    return JSON.parse(localStorage.getItem('carrito'))
+    }else {
+        return []
+    }
+}
+
+const carrito = recuperarCarrito()
 const prendas = [{codigo: 1,imagen:'./assets/remeraCaosIsMe.jpg', articulo: 'Remera Caos Is Me', precio: 3500 },
                  {codigo: 2,imagen:'./assets/remeraCaosShinShan.jpg', articulo: 'Remera Caos Shin & Shan', precio: 3700 },
                  {codigo: 3,imagen:'./assets/remeraFlor.jpg', articulo: 'Remera Flor', precio: 3100},

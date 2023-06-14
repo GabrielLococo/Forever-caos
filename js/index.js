@@ -69,10 +69,10 @@ function clickButton() {
         button.addEventListener('click', (e)=> {
           const prendaElegida = prendas.find((prenda) => prenda.codigo === parseInt(e.target.id))
           carrito.push(prendaElegida)
-          console.table(carrito)
+          localStorage.setItem('carrito', JSON.stringify(carrito))
+          
         })
     }
 }
-
 
 
