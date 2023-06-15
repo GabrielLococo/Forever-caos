@@ -70,7 +70,6 @@ function clickButton() {
           const prendaElegida = prendas.find((prenda) => prenda.codigo === parseInt(e.target.id))
           carrito.push(prendaElegida)
           localStorage.setItem('carrito', JSON.stringify(carrito))
-          
         })
     }
 }
