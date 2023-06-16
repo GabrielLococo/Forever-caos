@@ -53,11 +53,20 @@ function retornoCardHTML(prenda) {
             </div>`
 }
 
+function retornoError() {
+    return `<div>
+                <h3>Ha habido un error <br> Estamos trabajando para solucionar el problema</h3>
+                <h4>Intenta de nuevo en unos instantes...</h4>
+            </div>`
+}
+
 function cargarProductos() {
     container.innerHTML = ''
-    prendas.forEach((prenda) => {
-        container.innerHTML += retornoCardHTML(prenda)
-    })
+    if (prendas.length > 0) {
+        prendas.forEach((prenda) => container.innerHTML+= retornoCardHTML(prenda))
+    } else { 
+      container.innerHTML = retornoError()  
+    }
     clickButton() 
 }
 

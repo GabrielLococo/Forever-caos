@@ -23,7 +23,7 @@ main {
 }
 
 .banner {
-    height: 500px;
+    height: 400px;
     background-image: url(/assets/forevercaos-bg2.jpg);
     background-repeat: no-repeat;
     background-position: center;
@@ -94,6 +94,10 @@ h1, h3 {
     font-size: 18px;
 }
 
+h4 {
+    text-align: center;
+    margin-top: 10px;
+}
 
 .botonComprar {
     margin: auto;
@@ -143,8 +147,8 @@ h1, h3 {
 
 .footerForever p {
     color: rgb(87, 87, 87);
-    font-size: 30px;
-    letter-spacing: 12px;
+    font-size: 15px;
+    letter-spacing: 7px;
     margin: auto;
     font-family:'Graduate';
 
@@ -161,7 +165,7 @@ h1, h3 {
     border: 2px solid black;
     font-family: 'Graduate';
     background-color: #0000004d;
-    font-size: 20px;
+    font-size: 10px;
     
 }
 
@@ -173,7 +177,9 @@ table {
 .carrito {
     background-color: rgba(113, 0, 128, 0.226);
     display: flex;
-    margin: 50px auto 20px auto;
+    flex-direction: column;
+    margin: 50px 15px 20px 15px;
+    
 }
 
 th {
@@ -188,12 +194,44 @@ td {
    padding: 0 10px 5px 10px;
 }
 
-.imagenTabla img {   /* que en la vista mobile no aparezca la mini imagen, agregar mediaquery*/
-    width: 100px;
-    height: 100px;
+.imagenTabla img {   
+    width: 50px;
+    height: 50px;
 }
 
-/* arreglar boton index carrito
-ver en la clase el boton QUITAR 
-poner las mediaqueris que dice ahi arriba en coment */
 
+
+ /*TABLET /DESKTOP */
+ @media (min-width:700px) {
+    .botonesCarrito {
+        margin: 20px auto 20px auto;
+        padding: 10px;
+        font-size: 20px;
+        
+    }
+    
+    table {
+        margin: 30px
+    }
+    
+    .carrito {
+        margin: 50px 15px 20px 15px;
+        
+    }
+    
+    th {
+       font-size: 15px;
+       padding: 10px 50px 10px 0px;
+    }
+    
+    td {
+       font-size: 15px;
+       padding: 0 50px 5px 10px;
+    }
+    
+    .imagenTabla img {  
+        width: 100px;
+        height: 100px;
+    }
+
+}
