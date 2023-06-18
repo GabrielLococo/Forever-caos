@@ -6,7 +6,7 @@ function retornoTablaHTML(prendaCarrito) {
                 <th>${prendaCarrito.codigo}</th>
                 <td>${prendaCarrito.articulo}</td>
                 <td>$${prendaCarrito.precio}</td>
-                <td>logo</td>
+                <td><button class="buttonClickUnbuy" id= "${prendaCarrito.codigo}">❌ </button></td>
             </tr>`
 }
 
@@ -17,6 +17,15 @@ if (carrito.length > 0) {
 }
 
 
+function clickButton() {
+    const buttons = document.querySelectorAll('button.buttonClickDelete') 
+    for (let button of buttons) {
+        button.addEventListener('click', (e)=> {
+          const prendaElegida = prendas.find((prenda) => prenda.codigo === parseInt(e.target.id))
+          carrito.push(prendaElegida)
+          localStorage.setItem('carrito', JSON.stringify(carrito))
+        })
+    }
+}
 
-//arreglar boton index carrito
-//ver en la clase el boton QUITAR
+
