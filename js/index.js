@@ -1,5 +1,6 @@
 
 const container = document.getElementById('container')
+const inputSearch = document.querySelector('input#inputSearch')
 
 function retornoCardHTML(prenda) {
     return `<div class="card">
@@ -17,23 +18,23 @@ function retornoError() {
             </div>`
 }
 
-function cargarProductos() {
+function cargarProductos(productos = prendas) {
     container.innerHTML = ''
-    if (prendas.length > 0) {
-        prendas.forEach((prenda) => container.innerHTML+= retornoCardHTML(prenda))
+    if (productos.length > 0) {
+        productos.forEach((prenda) => container.innerHTML+= retornoCardHTML(prenda))
     } else { 
       container.innerHTML = retornoError()  
     }
     clickButton() 
 }
 
-cargarProductos()
+cargarProductos(prendas)
 
 function clickButton() {
     const buttons = document.querySelectorAll('button.buttonClickBuy') 
     for (let button of buttons) {
         button.addEventListener('click', (e)=> {
-          const prendaElegida = prendas.find((prenda) => prenda.codigo === parseInt(e.target.id))
+          const prendaElegida = prendas.find((prendas) => prendas.codigo === parseInt(e.target.id))
           carrito.push(prendaElegida)
           localStorage.setItem('carrito', JSON.stringify(carrito))
         })
@@ -41,3 +42,11 @@ function clickButton() {
 }
 
 
+const filtrarProductos = ()=> {
+    let resultadoBusqueda = prendas.filter((prenda)=> prenda.articulo.toLowerCase().includes(inputSearch.value.trim().toLowerCase()))
+    if (resultadoBusqueda.length > 0) {
+        cargarProductos(resultadoBusqueda)
+    }
+}
+
+inputSearch.addEventListener('search', filtrarProductos)

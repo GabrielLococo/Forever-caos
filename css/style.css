@@ -54,6 +54,15 @@ h1, h3 {
     padding: 5px;
 }
 
+.inputSearch {
+    background-color: antiquewhite;
+    font-family: 'graduate';
+    color: black;
+    overflow: hidden;
+    height: 25px;
+    border-radius: 5px;
+    
+}
 
 .container {
     background-color: antiquewhite;
@@ -175,10 +184,11 @@ table {
 }
 
 .carrito {
-    background-color: rgba(113, 0, 128, 0.226);
     display: flex;
     flex-direction: column;
-    margin: 50px 15px 20px 15px;
+    margin: 0 15px 20px 15px;
+    border-radius: 5px;
+
     
 }
 
