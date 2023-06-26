@@ -37,6 +37,14 @@ function clickButton() {
           const prendaElegida = prendas.find((prendas) => prendas.codigo === parseInt(e.target.id))
           carrito.push(prendaElegida)
           localStorage.setItem('carrito', JSON.stringify(carrito))
+          Swal.fire({
+            title: 'Lo has sumado a tu carrito!',
+            imageUrl: '../assets/forevercaos-bg.jpg',
+            imageWidth: 200,
+            imageHeight: 200,
+            imageAlt: 'Custom image',   
+            confirmButtonText: 'seguir comprando'
+          })
         })
     }
 }
