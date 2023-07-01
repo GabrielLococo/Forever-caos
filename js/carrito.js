@@ -12,7 +12,7 @@ function retornoTablaHTML(prendaCarrito) {
 
 if (carrito.length > 0) {
     carrito.forEach(prendaCarrito => {
-        tbody.innerHTML += retornoTablaHTML(prendaCarrito)
+        if (prendaCarrito !== null) tbody.innerHTML += retornoTablaHTML(prendaCarrito)
     })
 }
 

@@ -7,7 +7,7 @@ function retornoCardHTML(prenda) {
                 <div class="imagen"><img src="${prenda.imagen}"></div>
                 <div class="prenda"><h2>${prenda.articulo}</h2></div>
                 <div class="importe"><p>$ ${prenda.precio}</p></div>
-                <div class="botonComprar"><button id= " ${prenda.codigo}" class="buttonClickBuy">Agregar al carrito</button></div>
+                <div class="botonComprar"><button id= "${prenda.codigo}" class="buttonClickBuy">Agregar al carrito</button></div>
             </div>`
 }
 
@@ -32,7 +32,7 @@ function clickButton() {
     const buttons = document.querySelectorAll('button.buttonClickBuy') 
     for (let button of buttons) {
         button.addEventListener('click', (e)=> {
-          const prendaElegida = prendas.find((prendas) => prendas.codigo === parseInt(e.target.id))
+          const prendaElegida = prendas.find((prendas) => prendas.codigo === e.target.id)
           carrito.push(prendaElegida)
           localStorage.setItem('carrito', JSON.stringify(carrito))
           Swal.fire({
