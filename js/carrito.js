@@ -35,7 +35,7 @@ function clickButtonBuyFinal(){
         Swal.fire({
             title: '¡Listo!',
             text: 'En instantes te llegará el detallado de tu compra a tu email! Gracias por comprar en ForeverCaos',
-            confirmButtonText: '💜'
+            confirmButtonText: ' 💜 '
           })
     })
 }
