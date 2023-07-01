@@ -130,16 +130,16 @@ h4 {
   touch-action: manipulation;
 }
 
-.botonComprar button:hover {
+.botonComprar:hover {
   background-color: #f9fafb;
 }
 
-.botonComprar button:focus {
+.botonComprar:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
 
-.botonComprar button:focus-visible {
+.botonComprar:focus-visible {
   box-shadow: none;
 }
 
@@ -183,6 +183,19 @@ h4 {
     font-size: 10px;
     
 }
+
+.botonesCarrito:hover {
+    background-color: #f9fafb;
+  }
+  
+.botonesCarrito:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+  
+.botonesCarrito:focus-visible {
+    box-shadow: none;
+  }
 
 table {
     background-color: #faebd798;

@@ -1,5 +1,6 @@
 const tbody = document.querySelector('tbody')
 
+
 function retornoTablaHTML(prendaCarrito) {
     return `<tr>
                 <td class="imagenTabla"><img src=".${prendaCarrito.imagen}"></td>
@@ -12,22 +13,32 @@ function retornoTablaHTML(prendaCarrito) {
 
 if (carrito.length > 0) {
     carrito.forEach(prendaCarrito => {
-        tbody.innerHTML += retornoTablaHTML(prendaCarrito)
+       if (prendaCarrito !== null) tbody.innerHTML += retornoTablaHTML(prendaCarrito)
     })
 }
 
+function clickButtonUnbuy() {
+    const buttons = document.querySelectorAll('button.buttonClickUnbuy') 
+    for (let button of buttons) {
+        button.addEventListener('click', (e)=> {
+          const prendaElegida = prendas.find((prenda) => prenda.codigo === e.target.id)
+          carrito.splice(prendaElegida,1)
+          localStorage.setItem('carrito', JSON.stringify(carrito))
+          location.reload()
+        })
+    }
+}
 
-// funcion de quitar elementos del carrito que no funciona, pero es un problema secundario, no darle bola.
+function clickButtonBuyFinal(){
+    const buttonFinalBuy = document.querySelector('button.buttonBuyFinal')
+    buttonFinalBuy.addEventListener('click',function(){
+        Swal.fire({
+            title: '¡Listo!',
+            text: 'En instantes te llegará el detallado de tu compra a tu email! Gracias por comprar en ForeverCaos',
+            confirmButtonText: '💜'
+          })
+    })
+}
+clickButtonBuyFinal()
 
-// function clickButton() {
-//     const buttons = document.querySelectorAll('button.buttonClickDelete') 
-//     for (let button of buttons) {
-//         button.addEventListener('click', (e)=> {
-//           const prendaElegida = prendas.find((prenda) => prenda.codigo === parseInt(e.target.id))
-//           carrito.push(prendaElegida)
-//           localStorage.setItem('carrito', JSON.stringify(carrito))
-//         })
-//     }
-// }
-
-
+clickButtonUnbuy()
