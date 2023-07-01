@@ -17,15 +17,17 @@ if (carrito.length > 0) {
 }
 
 
-function clickButton() {
-    const buttons = document.querySelectorAll('button.buttonClickDelete') 
-    for (let button of buttons) {
-        button.addEventListener('click', (e)=> {
-          const prendaElegida = prendas.find((prenda) => prenda.codigo === parseInt(e.target.id))
-          carrito.push(prendaElegida)
-          localStorage.setItem('carrito', JSON.stringify(carrito))
-        })
-    }
-}
+// funcion de quitar elementos del carrito que no funciona, pero es un problema secundario, no darle bola.
+
+// function clickButton() {
+//     const buttons = document.querySelectorAll('button.buttonClickDelete') 
+//     for (let button of buttons) {
+//         button.addEventListener('click', (e)=> {
+//           const prendaElegida = prendas.find((prenda) => prenda.codigo === parseInt(e.target.id))
+//           carrito.push(prendaElegida)
+//           localStorage.setItem('carrito', JSON.stringify(carrito))
+//         })
+//     }
+// }
 
 

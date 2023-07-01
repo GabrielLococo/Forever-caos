@@ -12,7 +12,7 @@ function retornoCardHTML(prenda) {
 }
 
 function retornoError() {
-    return `<div>
+    return `<div class= "divError">
                 <h3>Ha habido un error <br> Estamos trabajando para solucionar el problema</h3>
                 <h4>Intenta de nuevo en unos instantes...</h4>
             </div>`
@@ -28,8 +28,6 @@ function cargarProductos(productos = prendas) {
     clickButton() 
 }
 
-cargarProductos(prendas)
-
 function clickButton() {
     const buttons = document.querySelectorAll('button.buttonClickBuy') 
     for (let button of buttons) {
@@ -39,7 +37,7 @@ function clickButton() {
           localStorage.setItem('carrito', JSON.stringify(carrito))
           Swal.fire({
             title: 'Lo has sumado a tu carrito!',
-            imageUrl: '../assets/forevercaos-bg.jpg',
+            imageUrl: 'assets/forevercaos-bg.jpg',
             imageWidth: 200,
             imageHeight: 200,
             imageAlt: 'Custom image',   
@@ -49,7 +47,6 @@ function clickButton() {
     }
 }
 
-
 const filtrarProductos = ()=> {
     let resultadoBusqueda = prendas.filter((prenda)=> prenda.articulo.toLowerCase().includes(inputSearch.value.trim().toLowerCase()))
     if (resultadoBusqueda.length > 0) {
@@ -58,3 +55,13 @@ const filtrarProductos = ()=> {
 }
 
 inputSearch.addEventListener('search', filtrarProductos)
+
+function obtenerProductos() {
+    fetch(URL)
+    .then((response)=> response.json() )
+    .then((data)=> prendas.push(...data))
+    .then(()=> cargarProductos(prendas))
+    .catch((error)=> console.error('Error al obtener los datos! ', error))
+}
+
+obtenerProductos()
